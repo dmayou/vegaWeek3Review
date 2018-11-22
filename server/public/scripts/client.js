@@ -69,11 +69,17 @@ function getInventory(){
     }) // end ajax
 } //end getInventory
 
+function handleDelete() {
+    const el = $(this);
+    console.log('in handleDelete; ', el.parent());
+}
+
 function readyNow(){
     console.log( 'in readyNow' );
     $( '#addItemButton' ).on( 'click', addItem );
     $( '#addNewButton' ).on( 'click', displayAdd );
     $( '#viewInventoryButton' ).on( 'click', displayInventory );
+    $( 'ul' ).on('click', '.deleteBtn', handleDelete);
     displayAdd();
 } // readyNow
 
@@ -86,7 +92,12 @@ function updateInventory( array ){
     el.empty();
     // loop through the inventory & display each item in ul
     for( let item of array ){
-        let displayString = `<li>${item.name}, ${item.description}: ${item.size} ${item.color}</li>`;
-        el.append( displayString );
+        el.append(
+            $('<li></li>')
+                .append(
+                    `${item.name}, ${item.description}: ${item.size} ${item.color}
+                    <button class="deleteBtn">delete</button>`)
+                .data('invItem', item)
+        );
     } // end for 
 } // end updateInventory

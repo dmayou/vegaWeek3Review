@@ -8,7 +8,13 @@ CREATE TABLE "inventory" (
 	"size" VARCHARS(20) NOT NULL,
 );
 
-INSERT INTO koalas ("name", "gender", "age", "ready_to_transfer", "notes") 
-VALUES ('Scotty', ' M', '4', 'TRUE', 'Guatemala');
-
-
+INSERT INTO inventory ("name", "description", "color", "size") 
+VALUES ('Flake of Snow', 'Precious', 'White', 'Tiny');
+INSERT INTO inventory ("name", "description", "color", "size") 
+VALUES ('Pile of Snow', '', '', '');
+INSERT INTO inventory ("name", "description", "color", "size") 
+VALUES ('', '', '', '');
+INSERT INTO inventory ("name", "description", "color", "size") 
+VALUES ('', '', '', '');
+INSERT INTO inventory ("name", "description", "color", "size") 
+VALUES ('Universe of Snow', '', '', '');
