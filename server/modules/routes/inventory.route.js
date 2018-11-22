@@ -21,7 +21,13 @@ pool.on('error', () => {
 });
 
 router.get( '/', ( req, res )=>{
-    res.send( inventory.list )
+    const query = 'SELECT * FROM "inventory" ORDER BY "name" ASC';
+    pool.query(query)
+        .then( (results) => {
+            res.send(results.rows);
+        }).catch( (err) => {
+            res.sendStatus(500);
+        });
 }); //end GET
 
 router.post( '/', ( req, res )=>{
